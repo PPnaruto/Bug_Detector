@@ -5,6 +5,7 @@ if(token.length != 0){
 }
 const initialState={
     authState: auth,
+    bugState:false
 }
 
 let authReducer = (state = initialState,Action) =>{
@@ -15,6 +16,11 @@ let authReducer = (state = initialState,Action) =>{
                 authState:Action.payload
             }
         break;
+        case "BUG_STATUS":
+            state = {
+                ...state,
+                bugStatus:Action.payload
+            }
         default :
             return state
     }
