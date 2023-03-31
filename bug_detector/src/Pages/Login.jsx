@@ -39,6 +39,7 @@ const Login = () => {
                         isClosable: true,
                     });
             authAction(true,dispatch); 
+            localStorage.setItem("authToken",token);
             navigate("/dashboard");
             }
         }).catch((err)=>{
