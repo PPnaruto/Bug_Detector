@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Box, Input,Text } from '@chakra-ui/react';
 import style from "../Styles/SignUp.module.css";
 import { Link, redirect, useParams } from 'react-router-dom';
+import axios from 'axios';
+import { useToast } from '@chakra-ui/react'
 
 
 const Login = () => {
@@ -10,18 +12,34 @@ const Login = () => {
         email:"",
         password:""
     });
+    const toast = useToast();
 
     const handleChange = (e) =>{
         setData({
-            ...data,
-            [e.target.name]:e.target.value
+                ...data,
+                [e.target.name]:e.target.value
         })
     }
 
-    const handleSubmit = ()=>{
+    const handleSubmit = (e)=>{
         e.preventDefault();
         console.log(data);
-        alert("Login Successfully");
+        axios.post("http://localhost:8000/users/login",data)
+        .then((res)=>{
+            const token = res.data.data.token;
+            console.log(res.data.data.token);
+            if(token!=null){
+                    toast({
+                        title: "Login Successful",
+                        position: "top-right",
+                        isClosable: true,
+                    });
+            
+            }
+        }).catch((err)=>{
+            console.log(err);
+        })
+        // alert("Login Successfully");
     }
 
 

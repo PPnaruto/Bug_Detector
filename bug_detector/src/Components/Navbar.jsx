@@ -12,9 +12,12 @@ const Navbar = () => {
         </div>
         
 
-        <div>
+        <div style={{display:"flex",gap:"30px"}}>
           <Link to="/login">
             <Button colorScheme='red' cursor="pointer" className={style.button} >Login</Button>
+          </Link>
+          <Link>
+              <Button colorScheme='blue' cursor="pointer" className={style.button} >Dashboard</Button>
           </Link>
         </div>
     </div>
