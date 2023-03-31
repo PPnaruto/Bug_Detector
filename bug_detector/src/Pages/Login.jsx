@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Box, Input,Text } from '@chakra-ui/react';
 import style from "../Styles/SignUp.module.css";
-import { Link, redirect, useParams } from 'react-router-dom';
+import { Link, redirect, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { useToast } from '@chakra-ui/react'
+import { useToast } from '@chakra-ui/react';
+import { useDispatch } from "react-redux";
+import { authAction } from '../Redux/Actions/authAction';
 
 
 const Login = () => {
@@ -12,7 +14,9 @@ const Login = () => {
         email:"",
         password:""
     });
+    const navigate = useNavigate();
     const toast = useToast();
+    const dispatch = useDispatch();
 
     const handleChange = (e) =>{
         setData({
@@ -34,7 +38,8 @@ const Login = () => {
                         position: "top-right",
                         isClosable: true,
                     });
-            
+            authAction(true,dispatch); 
+            navigate("/dashboard");
             }
         }).catch((err)=>{
             console.log(err);

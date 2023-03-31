@@ -16,7 +16,7 @@ const Navbar = () => {
           <Link to="/login">
             <Button colorScheme='red' cursor="pointer" className={style.button} >Login</Button>
           </Link>
-          <Link>
+          <Link to="/dashboard">
               <Button colorScheme='blue' cursor="pointer" className={style.button} >Dashboard</Button>
           </Link>
         </div>
