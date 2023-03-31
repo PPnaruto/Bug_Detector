@@ -1,8 +1,9 @@
 import React from 'react';
 import { Button, ButtonGroup } from '@chakra-ui/react';
-import style from "../../Styles/Navbar.module.css"; 
+import style from "../Styles/Navbar.module.css"; 
+import { Link } from 'react-router-dom';
 
-const Navbar1 = () => {
+const Navbar = () => {
   return (
     <div className={style.navbar}>
         <div>
@@ -12,10 +13,12 @@ const Navbar1 = () => {
         
 
         <div>
-           <Button colorScheme='red' cursor="pointer" className={style.button} >Login</Button>
+          <Link to="/login">
+            <Button colorScheme='red' cursor="pointer" className={style.button} >Login</Button>
+          </Link>
         </div>
     </div>
   )
 }
 
-export default Navbar1
+export default Navbar
